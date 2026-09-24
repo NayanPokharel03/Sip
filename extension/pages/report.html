@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Sip — Report</title>
+  <link rel="stylesheet" href="../lib/base.css">
+  <link rel="stylesheet" href="report.css">
+  <script type="module" src="report.js"></script>
+</head>
+<body>
+  <header class="top">
+    <h1>Water report</h1>
+    <nav class="daynav">
+      <button id="prev" title="Previous day (←)">‹</button>
+      <input id="date" type="date" aria-label="Day">
+      <button id="next" title="Next day (→)">›</button>
+      <button id="today" title="Today (T)">Today</button>
+    </nav>
+    <a class="btn" href="options.html">Settings</a>
+  </header>
+
+  <main>
+    <h2 id="dayTitle" class="day-title"></h2>
+
+    <section class="cards">
+      <div class="card"><span class="label">Total</span><span id="cTotal" class="value num"></span><span id="cGoal" class="sub muted"></span></div>
+      <div class="card"><span class="label">Glasses</span><span id="cCount" class="value num"></span><span id="cAvg" class="sub muted"></span></div>
+      <div class="card"><span class="label">First / last</span><span id="cSpan" class="value num"></span><span id="cSpanSub" class="sub muted"></span></div>
+      <div class="card"><span class="label">Longest gap</span><span id="cGap" class="value num"></span><span id="cGapSub" class="sub muted"></span></div>
+    </section>
+    <div id="progress" class="progress big"><div id="fill"></div></div>
+
+    <section class="panel">
+      <div class="panel-head">
+        <h2>Timeline</h2>
+        <form id="addForm" class="add-form">
+          <input id="addTime" type="time" required aria-label="Time">
+          <select id="addPreset" aria-label="Size"></select>
+          <input id="addAmount" type="number" min="1" step="any" required aria-label="Amount">
+          <span id="addUnit" class="muted"></span>
+          <button class="primary">Add</button>
+        </form>
+      </div>
+      <table class="timeline">
+        <thead><tr><th>Time</th><th>Amount</th><th>Size</th><th>Running total</th><th>Gap</th><th></th></tr></thead>
+        <tbody id="rows"></tbody>
+      </table>
+      <p id="empty" class="muted empty">No water logged on this day.</p>
+    </section>
+
+    <section class="panel">
+      <div class="panel-head">
+        <h2>Trend</h2>
+        <div class="seg" role="group" aria-label="Range">
+          <button data-range="7" class="active">Week</button>
+          <button data-range="30">Month</button>
+        </div>
+      </div>
+      <div id="chart" class="chart"></div>
+      <p id="chartSummary" class="muted"></p>
+    </section>
+
+    <section class="panel">
+      <h2>Export</h2>
+      <form id="exportForm" class="export-form">
+        <label>From <input id="from" type="date" required></label>
+        <label>To <input id="to" type="date" required></label>
+        <button class="primary">Download CSV</button>
+        <button type="button" id="exportAll">Export everything</button>
+      </form>
+    </section>
+  </main>
+</body>
+</html>
