@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Sip</title>
+  <link rel="stylesheet" href="../lib/base.css">
+  <link rel="stylesheet" href="popup.css">
+  <script src="../lib/keys.js"></script>
+  <script type="module" src="popup.js"></script>
+</head>
+<body>
+  <header>
+    <div class="headline">
+      <div><span id="total" class="total num">0 ml</span> <span class="muted">of <span id="goal" class="num"></span></span></div>
+      <span id="count" class="muted num"></span>
+    </div>
+    <div id="progress" class="progress"><div id="fill"></div></div>
+  </header>
+
+  <section id="presets" class="presets" aria-label="Log water"></section>
+
+  <section class="today">
+    <h2>Today</h2>
+    <ol id="list" class="list"></ol>
+    <p id="empty" class="muted empty">Nothing logged yet today.</p>
+  </section>
+
+  <footer>
+    <button id="undo">Undo <kbd data-keys="undo"></kbd></button>
+    <button id="report">Report <kbd data-keys="report"></kbd></button>
+    <button id="options">Settings <kbd data-keys="options"></kbd></button>
+  </footer>
+  <p class="hint muted">Press <kbd data-keys="log"></kbd> to log your default glass, or <kbd>1</kbd>–<kbd id="maxDigit">9</kbd> for a size.</p>
+</body>
+</html>
