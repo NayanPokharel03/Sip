@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Sip — Settings</title>
+  <link rel="stylesheet" href="../lib/base.css">
+  <link rel="stylesheet" href="options.css">
+  <script src="../lib/keys.js"></script>
+  <script type="module" src="options.js"></script>
+</head>
+<body>
+  <header class="top">
+    <h1>Sip settings</h1>
+    <span id="saved" class="saved" aria-live="polite"></span>
+    <a class="btn" href="report.html">Open report</a>
+  </header>
+
+  <main>
+    <section class="panel">
+      <h2>Glass sizes</h2>
+      <p class="muted">The default size is what your "log" shortcuts record. In the popup, press <kbd>1</kbd>–<kbd>9</kbd> to log a specific size.</p>
+      <div id="presets" class="presets"></div>
+      <button id="addPreset">+ Add size</button>
+    </section>
+
+    <section class="panel grid2">
+      <label>Daily goal
+        <span class="with-unit"><input id="goal" type="number" min="1" step="any"> <span class="unit-label"></span></span>
+      </label>
+      <label>Unit
+        <select id="unit"><option value="ml">Milliliters (ml / L)</option><option value="oz">Fluid ounces (oz)</option></select>
+      </label>
+      <label>A new day starts at
+        <select id="dayStart"></select>
+        <small class="muted">Glasses before this time count toward the previous day.</small>
+      </label>
+    </section>
+
+    <section class="panel">
+      <h2>Browser shortcuts</h2>
+      <p class="muted">These work on every tab, including new-tab and settings pages. Browsers require them to include
+        <kbd>Ctrl</kbd> or <kbd>Alt</kbd>, and you change them on the browser's own shortcuts page.</p>
+      <table class="commands"><tbody id="commands"></tbody></table>
+      <button id="openShortcuts" class="primary">Change browser shortcuts</button>
+    </section>
+
+    <section class="panel">
+      <h2>In-page shortcuts</h2>
+      <p class="muted">Any key you like, such as <kbd>Shift+/</kbd>. They work on normal websites, but not on browser
+        pages like the new-tab page. They're ignored while you're typing in a text field.</p>
+      <label class="check"><input id="inPageEnabled" type="checkbox"> Enable in-page shortcuts</label>
+      <div class="keymap" data-group="inPage">
+        <div class="row"><span>Open Sip</span><div class="keys" data-action="open"></div></div>
+        <div class="row"><span>Log default glass</span><div class="keys" data-action="log"></div></div>
+        <div class="row"><span>Undo last glass</span><div class="keys" data-action="undo"></div></div>
+      </div>
+      <label>Turn off on these sites <small class="muted">(one per line, e.g. github.com)</small>
+        <textarea id="excluded" rows="3" spellcheck="false"></textarea>
+      </label>
+    </section>
+
+    <section class="panel">
+      <h2>Popup keys</h2>
+      <p class="muted">Keys that work while the Sip popup is open.</p>
+      <div class="keymap" data-group="popupKeys">
+        <div class="row"><span>Log default glass</span><div class="keys" data-action="log"></div></div>
+        <div class="row"><span>Undo last glass</span><div class="keys" data-action="undo"></div></div>
+        <div class="row"><span>Open report</span><div class="keys" data-action="report"></div></div>
+        <div class="row"><span>Open settings</span><div class="keys" data-action="options"></div></div>
+      </div>
+    </section>
+
+    <section class="panel">
+      <h2>Data</h2>
+      <p class="muted">Everything is stored in this browser only. Nothing is sent anywhere. Export a CSV from the
+        <a href="report.html">report</a> page.</p>
+      <div class="actions">
+        <button id="resetKeys">Reset shortcuts to defaults</button>
+        <button id="clearAll" class="danger">Delete all logged water…</button>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
